@@ -1,0 +1,26 @@
+/* This is a RAPID Model template. Customize it to describe your services and data types. */
+rapidModel SharedDataTypes
+	dataModel TaxBlasterDataModel
+		structure TaxFiling
+			filingID : string
+			taxpayer : reference to Person
+			jurisdiction : string
+			year : gYear
+			period : int
+			currency : string
+			grossIncome : decimal
+			taxLiability : decimal
+
+		/** A TaxBlaster user. */
+		structure Person
+			taxpayerID : string
+			lastName : string
+			firstName : string
+			otherNames : string*
+			
+		structure CPA
+			employeeID: string
+			certificationID: string
+			certExpiry: date
+			assignedAccounts: reference to Person*
+			activeTaxFilings: reference to TaxFiling*

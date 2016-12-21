@@ -1,0 +1,14 @@
+import SharedDataTypes.TaxBlasterDataModel from "SharedDataTypes.rapid" as shared
+
+rapidModel CRM
+	resourceAPI CRM_API baseURI "http://my.co/crm"
+		objectResource ContactObject type Person
+			URI /contacts/{id}
+				required templateParam id property taxpayerID
+			mediaTypes
+				application/xml
+			method GET getContactObject
+				request
+				response ContactObject statusCode 200
+		
+

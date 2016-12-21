@@ -1,3 +1,6 @@
+import SharedDataTypes.TaxBlasterDataModel from "SharedDataTypes.rapid" as shared
+import CRM.CRM_API from "CRM.rapid" as crm
+
 rapidModel RXP_TaxBlaster_Example
 	resourceAPI TaxBlasterAPI baseURI "http://rapid-api.org/taxblaster/api/v1"
 
@@ -63,37 +66,20 @@ rapidModel RXP_TaxBlaster_Example
 				request PersonObject
 				response statusCode 200
 				response statusCode 400
+				
+		objectResource CPAObject type CPA
+			URI /CPAs/{id}
+				required templateParam id property employeeID 				
+			referenceLink > assignedAccounts
+				targetResource PersonObject
+				linkRelation related
+			
+			referenceEmbed > activeTaxFilings
+				referenceLink > taxpayer
+					targetResource crm.ContactObject
+					linkRelation canonical
 
-	/** Supporting data types for the TaxBlaster API */
-	dataModel TaxBlasterDataModel
-		/** A tax filing record for a given user, in a given tax jurisdiction, in a 
-		    specified tax year. */
-		structure TaxFiling
-			/** A unique, system-assigned identifier for the tax filing. */
-			filingID : string
-			/** Reference to the person who owns this filing. */
-			taxpayer : reference to Person
-			/** Country, province, state or local tax authority where this is being filed. */
-			jurisdiction : string
-			/** Tax year */
-			year : gYear
-			/** Period within the year, if any */
-			period : int
-			/** Currency code */
-			currency : string
-			/** Total income reported on tax filing. */
-			grossIncome : decimal
-			/** Net tax liability */
-			taxLiability : decimal
-
-		/** A TaxBlaster user. */
-		structure Person
-			/** A unique, system-assigned identifier for the user. */
-			taxpayerID : string
-			/** Legal family name. */
-			lastName : string
-			/** Legal first name. */
-			firstName : string
-			/** Names previously used **/
-			otherNames : string*
-
+			method GET getCPAObject
+				request
+				response CPAObject statusCode 200
+	
