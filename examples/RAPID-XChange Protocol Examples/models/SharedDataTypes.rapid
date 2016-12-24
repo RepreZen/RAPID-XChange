@@ -17,10 +17,10 @@ rapidModel SharedDataTypes
 			lastName : string
 			firstName : string
 			otherNames : string*
-			
+
 		structure CPA
 			employeeID: string
 			certificationID: string
 			certExpiry: date
 			assignedAccounts: reference to Person*
-			activeTaxFilings: reference to TaxFiling*
+			activeTaxFilings: reference to TaxFiling+

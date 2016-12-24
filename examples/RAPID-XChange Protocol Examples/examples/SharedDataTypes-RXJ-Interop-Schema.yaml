@@ -1,0 +1,95 @@
+---
+# This file contains hand-written YAML definitions to illustrate the expected form
+# for RAPID-XChange JSON Interop Schema.
+
+definitions:
+
+  TaxFiling:
+    type: object
+    properties:
+      filingID :
+        type: string
+        minLength: 1
+      taxpayer : 
+        $ref: "#/definitions/Person"
+      jurisdiction :
+        type: string
+        minLength: 1
+      year :
+        type: integer
+        format: int32
+      period :
+        type: integer
+        format: int32
+      currency :
+        type: string
+        minLength: 1
+      grossIncome :
+        type: number
+        format: double
+      taxLiability :
+        type: number
+        format: double
+
+  Person:
+    type: object
+    properties:
+      taxpayerID :
+        type: string
+      lastName :
+        type: string
+      firstName :
+        type: string
+      otherNames :
+        type: array
+        items: 
+          type: string
+
+  CPA:
+    type: object
+    minProperties: 1
+    properties:
+      employeeID:
+        type: string
+        minLength: 1
+      certificationID:
+        type: string
+        minLength: 1
+      certExpiry:
+        type: string
+        format: date 
+        minLength: 1
+      assignedAccounts:
+        type: array
+        items:
+          $ref: "#/definitions/Person"
+        minItems: 1
+      activeTaxFilings:
+        type: array
+        items:
+          $ref: "#/definitions/TaxFiling"
+        minItems: 1
+      _rapid_links:
+        $ref: "#/definitions/RAPIDLinkMap"
+
+  RAPIDLinkMap:
+    type: object
+    minProperties: 1
+    # this is to hold hyperlinks using other link relations
+    additionalProperties:
+      $ref: "#/definitions/RAPIDLinkObject"
+    properties:
+      related:
+        $ref: "#/definitions/RAPIDLinkObject"
+      canonical:
+        $ref: "#/definitions/RAPIDLinkObject"
+      
+  RAPIDLinkObject:
+    type: object
+    minProperties: 1
+    # this is to hold additional (future) properties of a hyperlink.
+    additionalProperties: {}
+    properties:
+      href:
+        type: string
+        minLength: 1
