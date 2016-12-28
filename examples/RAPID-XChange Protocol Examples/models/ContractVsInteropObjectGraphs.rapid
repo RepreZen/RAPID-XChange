@@ -1,11 +1,20 @@
 rapidModel TaxBlaster
 	resourceAPI TaxBlasterAPI baseURI "http://my.api"
-		objectResource TaxFiling type TaxFiling
+
+		objectResource TaxFilingObj type TaxFiling
 			URI /TaxFilings/{id}
+				required templateParam id property filingID
+			referenceLink >taxpayer 
+				targetResource PersonObj
+				targetProperties 
+					taxpayerID
+					firstName
+					lastName
 			method GET
 		
-		objectResource PersonResource type Person
+		objectResource PersonObj type Person
 			URI /People/{id}
+				templateParam id bound property taxpayerID
 			method GET
 		
 	dataModel TaxBlasterDataModel
@@ -20,7 +29,7 @@ rapidModel TaxBlaster
 			taxDue : decimal
 
 		structure Person
-			taxpayerID : string
+			taxpayerID : string!
 			lastName : string
 			firstName : string
 			otherNames : string*
