@@ -1,0 +1,28 @@
+rapidModel TaxBlaster
+	resourceAPI TaxBlasterAPI baseURI "http://my.api"
+		objectResource TaxFiling type TaxFiling
+			URI /TaxFilings/{id}
+			method GET
+		
+		objectResource PersonResource type Person
+			URI /People/{id}
+			method GET
+		
+	dataModel TaxBlasterDataModel
+		structure TaxFiling
+			filingID : string
+			taxpayer : reference to Person
+			jurisdiction : string
+			year : gYear
+			period : int
+			currency : string
+			grossIncome : decimal
+			taxDue : decimal
+
+		structure Person
+			taxpayerID : string
+			lastName : string
+			firstName : string
+			otherNames : string*
+			DOB : date
+			maritalStatus : boolean

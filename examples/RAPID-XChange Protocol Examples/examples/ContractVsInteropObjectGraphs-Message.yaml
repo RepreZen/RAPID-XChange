@@ -1,0 +1,14 @@
+filingID : "123"
+year : 2015
+period : 0
+jurisdiction : USA
+currency : USD
+taxDue : 3452
+grossIncome : 83450
+taxpayer:
+  taxpayerID : "456"
+  firstName : Joseph
+  lastName : Cagney
+  _rapid_links : 
+    related : 
+      href : "http://my.api/People/123"
