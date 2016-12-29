@@ -1,0 +1,16 @@
+namespace com.bigscience.data
+
+import com.bigscience.data.models.experiments from "ExperimentDataModel.rapid" as experiments
+
+rapidModel models
+	dataModel projects
+		structure Project
+			projectID : string
+			projectDescription : string
+			projectOwner : reference to Employee
+			Experiments : reference to Experiment*
+			
+		structure Employee
+			employeeID : string
+			firstName : string
+			lastName : string

@@ -1,0 +1,9 @@
+---
+name: Documentation
+genTemplateId: com.modelsolv.reprezen.gentemplates.doc.XDocGenTemplate
+relativeOutputDir: generated
+prerequisites: null
+primarySource: 
+  path: ../../../models/DataModelNamespaces/ExperimentDataModel.rapid
+namedSources: null 
+parameters: null

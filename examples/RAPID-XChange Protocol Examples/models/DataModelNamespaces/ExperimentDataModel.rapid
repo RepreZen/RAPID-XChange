@@ -1,0 +1,29 @@
+namespace com.bigscience.data
+rapidModel models
+	dataModel experiments
+	
+		structure Experiment
+			experimentID : string
+			name : string
+			description : string
+			Observations : reference to Observation			
+			
+		structure Observation
+			time : dateTime
+			metric : reference to Metric
+			observedQuantity : containing reference to Quantity
+			
+		structure Metric
+			metricName : string
+			defaultUOM : UnitOfMeasure
+			
+		structure Quantity
+			numericValue : decimal
+			UOM : UnitOfMeasure
+		
+		enum string UnitOfMeasure
+			MM : "millimeters"
+			CM : "centimeters"
+			M : "meters"
+			MG : "micrograms"
+			G : "grams"

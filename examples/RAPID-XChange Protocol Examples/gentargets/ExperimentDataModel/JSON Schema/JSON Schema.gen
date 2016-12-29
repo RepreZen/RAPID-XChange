@@ -1,0 +1,9 @@
+---
+name: JSON Schema
+genTemplateId: com.modelsolv.reprezen.gentemplates.jsonschema.xtend.XJsonSchemaGenTemplate
+relativeOutputDir: generated
+prerequisites: null
+primarySource: 
+  path: ../../../models/DataModelNamespaces/ExperimentDataModel.rapid
+namedSources: null 
+parameters: null

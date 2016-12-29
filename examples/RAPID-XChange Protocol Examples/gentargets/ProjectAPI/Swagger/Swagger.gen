@@ -1,0 +1,9 @@
+---
+name: Swagger
+genTemplateId: com.modelsolv.reprezen.gentemplates.swagger.XSwaggerGenTemplate
+relativeOutputDir: generated
+prerequisites: null
+primarySource: 
+  path: ../../../models/ProjectAPI.rapid
+namedSources: null 
+parameters: null

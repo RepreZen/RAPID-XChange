@@ -1,0 +1,32 @@
+namespace com.bigscience.apis
+
+import com.bigscience.data.models.experiments from "ExperimentDataModel.rapid" as experiments
+import com.bigscience.data.models.projects from "ProjectDataModel.rapid" as projects
+
+rapidModel projects
+
+	resourceAPI project_manager baseURI "http://bigscience.com/apis/project-manager"
+		objectResource ProjectObject type Project
+			URI /projects/{id}
+				required templateParam id property projectID
+			mediaTypes
+				application/xml
+			method GET getProject
+				request
+				response ProjectObject statusCode 200
+			method PATCH updateProject
+				request with type Project
+				response statusCode 200
+				response statusCode 400
+		
+		collectionResource ProjectExperiments type Experiment
+			URI /projects/{id}/experiments
+				required templateParam id type string
+			method GET getExperiments
+				request
+				response ProjectExperiments statusCode 200
+			method POST addExperiment
+				request with type Experiment
+				response statusCode 200
+				response statusCode 400
+	

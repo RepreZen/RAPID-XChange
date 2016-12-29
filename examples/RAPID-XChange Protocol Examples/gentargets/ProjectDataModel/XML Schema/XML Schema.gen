@@ -1,0 +1,9 @@
+---
+name: XML Schema
+genTemplateId: com.modelsolv.reprezen.gentemplates.xsd.XMLSchemaGenTemplate
+relativeOutputDir: generated
+prerequisites: null
+primarySource: 
+  path: ../../../models/DataModelNamespaces/ProjectDataModel.rapid
+namedSources: null 
+parameters: null
